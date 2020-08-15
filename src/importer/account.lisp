@@ -23,10 +23,3 @@
                          :code  (second line)
                          :owner (first line)
                          :name  name)))))
-
-
-(defun line2account-to (name)
-  (let ((account-to (gethash name *accounts*)))
-    (or account-to
-        (setf (gethash name *accounts*)
-              (make-instance 'account :name name)))))

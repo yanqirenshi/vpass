@@ -6,3 +6,5 @@
 (in-package :vpass.importer)
 
 (defvar *accounts* (make-hash-table :test 'equalp))
+
+(defvar *places* (make-hash-table :test 'equalp))

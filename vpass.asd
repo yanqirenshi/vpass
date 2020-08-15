@@ -9,6 +9,7 @@
                   :components
                   ((:file "package")
                    (:file "account")
+                   (:file "place")
                    (:file "trade")
                    (:file "total-line")
                    (:file "main")))

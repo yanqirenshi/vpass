@@ -3,13 +3,14 @@
 
 (defclass trade ()
   ((date                   :initarg :date                   :accessor date)
-   (account-from           :initarg :account-from           :accessor account-from)
-   (account-to             :initarg :account-to             :accessor account-to)
+   (account                :initarg :account                :accessor account)
+   (place                  :initarg :place                  :accessor place)
    (usage-amount           :initarg :usage-amount           :accessor usage-amount)
    (number-payments        :initarg :number-payments        :accessor number-payments)
    (number-payments-number :initarg :number-payments-number :accessor number-payments-number)
    (payment-amount         :initarg :payment-amount         :accessor payment-amount)
-   (description            :initarg :description            :accessor description)))
+   (description            :initarg :description            :accessor description)
+   (file                   :initarg :file                   :accessor file)))
 
 
 (defun line-trade-p (line)
@@ -29,13 +30,14 @@
       (parse-integer v)))
 
 
-(defun line2trade (line account-from)
+(defun line2trade (line account file-name)
   (make-instance 'trade
                  :date                   (date2ts (first line))
-                 :account-from           account-from
-                 :account-to             (line2account-to (second line))
+                 :account                account
+                 :place                  (line2place (second line))
                  :usage-amount           (trade-value2integer (third line))
                  :number-payments        (trade-value2integer (fourth line))
                  :number-payments-number (trade-value2integer (fifth line))
                  :payment-amount         (parse-integer (sixth line))
-                 :description            (seventh line)))
+                 :description            (seventh line)
+                 :file                   file-name))
