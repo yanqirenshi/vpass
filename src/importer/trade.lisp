@@ -21,7 +21,7 @@
 (defun date2ts (date)
   (local-time:parse-timestring date
                                :date-separator #\/
-                               :offset (* 9 60 60 -1)))
+                               :offset (* 60 60 9)))
 
 
 (defun trade-value2integer (v)
